@@ -27,7 +27,7 @@ state of the Martian atmosphere, including:
 - Solar longitude (`Ls`) and Mars Year (`MY`) coordinates
 
 Files are stored in **NetCDF** format, typically organized per Mars Year
-(e.g. `my24/`, `my25/`, …, `my35/`).
+(e.g. `my25/`, `my28/`).
 
 In this project, OpenMARS data is read with `xarray` / `netCDF4` and the
 scripts loop over Mars Years and Ls ranges to compute climatologies,
