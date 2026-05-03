@@ -14,7 +14,7 @@ from glob import glob
 
 # Directories
 nc_folder = "/mnt/F2BAB6C1BAB681A1/mars/datasets/my28"
-shapefile = "/home/atmos/revaldo/MarsGeologyShapefile/SIM3292_Global_Geology.shp"
+shapefile = "shapefiles/SIM3292_Global_Geology.shp"
 output_plot = "/mnt/F2BAB6C1BAB681A1/mars/plots/mars/MY28_source.png"
 
 plt.rcParams["font.family"] = "Serif"
