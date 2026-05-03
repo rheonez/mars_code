@@ -2,14 +2,13 @@
 
 Python analysis scripts for studying the Martian atmosphere using the
 **OpenMARS** reanalysis dataset. The scripts produce diagnostics and figures
-related to dust storms, zonal/meridional circulation, baroclinic transient
-waves, temperatures, and atmospheric optical depth.
+related to dust storms, zonal/meridional circulation, temperatures, and atmospheric optical depth.
 
 ---
 
 ## About the data: OpenMARS
 
-[**OpenMARS**](https://ordo.open.ac.uk/articles/dataset/OpenMARS_database/12181064)
+[**OpenMARS**](https://ordo.open.ac.uk/collections/OpenMARS_database/4278950)
 (*Open access to Mars Assimilated Reanalysis*) is a publicly available
 reanalysis of the Martian atmosphere produced by the Open University.
 It is built by **assimilating spacecraft observations** (primarily
@@ -46,11 +45,11 @@ edited to match your local OpenMARS download and shapefile location.
 
 | Script | What it does |
 |---|---|
-| `regional_dust.py` | Time series of regional column dust optical depth across defined Martian regions (MY25). |
-| `hovmoller.py` | Hovmöller (longitude–time) plot of column dust optical depth, MY28, Ls 266–275, southern mid-latitudes. |
-| `storm_source.py` | Map of column dust optical depth at the **source** stage of a global dust storm (MY28, Ls ≈ 170). |
-| `peak_phase.py` | Map at the **peak phase** of a global dust storm (MY25, Ls ≈ 198). |
-| `storm_propagation.py` | Map at the **propagation** stage of a global dust storm (MY28, Ls ≈ 267). |
+| `regional_dust.py` | Time series of regional column dust optical depth across defined Martian regions. |
+| `hovmoller.py` | Hovmöller (longitude–time) plot of column dust optical depth. |
+| `storm_source.py` | Map of column dust optical depth at the **source** stage of a global dust storm. |
+| `peak_phase.py` | Map at the **peak phase** of a global dust storm. |
+| `storm_propagation.py` | Map at the **propagation** stage of a global dust storm. |
 
 The four map scripts overlay the **Mars geology shapefile** (see below).
 
@@ -65,8 +64,8 @@ The four map scripts overlay the **Mars geology shapefile** (see below).
 
 | Script | What it does |
 |---|---|
-| `zonal-mean_temperature.py` | Pressure-vs-latitude contour plot of zonal-mean temperature (MY28, Ls 300–310). |
-| `zonal_mean-wind.py` | Pressure-vs-latitude contour plot of zonal-mean zonal wind `u` (MY28, Ls 300–310). |
+| `zonal-mean_temperature.py` | Pressure-vs-latitude contour plot of zonal-mean temperature. |
+| `zonal_mean-wind.py` | Pressure-vs-latitude contour plot of zonal-mean zonal wind `u`. |
 
 ---
 
@@ -178,7 +177,7 @@ The scripts in this repo use OpenMARS NetCDF files for **MY25** and
 ```
 
 Each script has a hard-coded `data_folder` / `nc_folder` near the top.
-**Edit it to match your local OpenMARS download** before running. The
+**Edit it to match the local OpenMARS download** before running. The
 scripts read all `.nc` files in that folder with
 `xarray.open_mfdataset(..., combine="by_coords")`.
 
@@ -189,15 +188,15 @@ scripts read all `.nc` files in that folder with
 Each script is standalone — just run it with Python:
 
 ```bash
-python regional_dust.py
-python hovmoller.py
-python storm_source.py
-python peak_phase.py
-python storm_propagation.py
-python meridional_circulation_my25.py
-python meridional_circulation_my28.py
-python zonal-mean_temperature.py
-python zonal_mean-wind.py
+python3 regional_dust.py
+python3 hovmoller.py
+python3 storm_source.py
+python3 peak_phase.py
+python3 storm_propagation.py
+python3 meridional_circulation_my25.py
+python3 meridional_circulation_my28.py
+python3 zonal-mean_temperature.py
+python3 zonal_mean-wind.py
 ```
 
 Output figures (PNG) are written to the path defined inside each
@@ -209,15 +208,8 @@ script, typically a `plots/` folder.
 
 - Mars Year (MY) and Solar Longitude (Ls, 0–360°) are the natural time
   coordinates used throughout — calendar dates are not used.
-- Some scripts assume specific Mars Years are present (e.g. MY24–MY35);
+- Some scripts assume specific Mars Years are present (e.g. MY25 or MY28);
   adjust the `MY` lists at the top if your local data covers a different
   range.
 - Large NetCDF reads use `dask` chunking; you may need to tune chunk
   sizes for your available RAM.
-
----
-
-## License
-
-Add a license of your choice (e.g. MIT) if you intend to share this
-publicly.
